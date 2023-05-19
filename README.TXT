@@ -1,12 +1,8 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
+Proyecto final Tecnología Orientada a Objetos
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Catch it!
+VERSION or DATE: semestre enero 2023
+AUTHORS: Ana Laura Araiza Araiza & Claudia Espinosa Guzmán
+
