@@ -25,7 +25,7 @@ public class RecordsScreen extends World
      */
     private void prepare()
     {
-        BackButton3 backButton3 = new BackButton3();
-        addObject(backButton3,67,59);
+        BackButton1 backButton1 = new BackButton1(new Options());
+        addObject(backButton1,67,59);
     }
 }

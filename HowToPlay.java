@@ -25,7 +25,7 @@ public class HowToPlay extends World
      */
     private void prepare()
     {
-        BackButton2 backButton2 = new BackButton2();
+        BackButton1 backButton2 = new BackButton1(new Options());
         addObject(backButton2,65,59);
     }
 }

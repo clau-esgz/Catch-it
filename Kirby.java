@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Kirby extends Actor
 {
-    private static int COUNT_STOP_KIRBY_START_VALUE = 20;
+    private static final int COUNT_STOP_KIRBY_START_VALUE = 20;
     private static final int OFFSET = 3;
     private static final int DIRECTION_RIGHT = 0;
     private static final int DIRECTION_LEFT = 1;
@@ -25,8 +25,8 @@ public class Kirby extends Actor
     private int velocityUpY = VELOCITY_UP_Y;
     
     
-    GreenfootImage img_down;
-    GreenfootImage img_up;
+    private GreenfootImage img_down;//cambiar 
+    private GreenfootImage img_up;
     
     public Kirby(){
         imagesRightLeft();
@@ -38,7 +38,7 @@ public class Kirby extends Actor
     public void act()
     {
         walkRightLeft();
-        gravedad();
+        gravedad();//caer
         moveKeys();
         selectImageWalk();
         

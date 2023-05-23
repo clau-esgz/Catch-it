@@ -27,7 +27,7 @@ public class Options extends World
     private void prepare()
     {
 
-        BackButton1 backButton = new BackButton1();
+        BackButton1 backButton = new BackButton1(new MainScreen());
         addObject(backButton,60,58);
         RecordsButton recordsButton = new RecordsButton();
         addObject(recordsButton,383,213);

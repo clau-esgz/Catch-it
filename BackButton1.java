@@ -12,8 +12,18 @@ public class BackButton1 extends Button
      * Act - do whatever the BackButton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    private final World backWorld;
+    
+    public BackButton1(World world){
+
+         backWorld = world;
+
+    }
     public void act()
     {
-        if(Greenfoot.mouseClicked(this)) Greenfoot.setWorld(new MainScreen());
+        if(Greenfoot.mouseClicked(this)) {
+            Greenfoot.setWorld(backWorld);
+        }
     }
 }
