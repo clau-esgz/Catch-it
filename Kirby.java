@@ -1,11 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Kirby here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Kirby extends Actor
 {
     private static final int COUNT_STOP_KIRBY_START_VALUE = 20;
@@ -23,29 +18,28 @@ public class Kirby extends Actor
     private int referenceY = REFERENCE_Y;
     private int velocityDownY = VELOCITY_DOWN_Y;
     private int velocityUpY = VELOCITY_UP_Y;
-    
-    
-    private GreenfootImage img_down;//cambiar 
-    private GreenfootImage img_up;
+
+    private GreenfootImage imgDown; 
+    private GreenfootImage imgUp;
     
     public Kirby(){
         imagesRightLeft();
         setImage(images[DIRECTION_RIGHT][0]);
-        img_down = new GreenfootImage("images/abajo.png");
-        img_up = new GreenfootImage("images/arriba.png");
+        imgDown = new GreenfootImage("images/abajo.png");
+        imgUp = new GreenfootImage("images/arriba.png");
     }
     
     public void act()
     {
         walkRightLeft();
-        gravedad();//caer
+        fall();
         moveKeys();
         selectImageWalk();
         
     }
     
     private void imagesRightLeft(){
-        images = new String[4][2];
+        images = new String[2][2];
         
         images[DIRECTION_RIGHT] = new String[]{
             "images/normal_derecha.png",
@@ -79,10 +73,10 @@ public class Kirby extends Actor
             direction = DIRECTION_LEFT;
         }
         if(Greenfoot.isKeyDown("down")){
-            setImage(img_down);
+            setImage(imgDown);
         }
          if(Greenfoot.isKeyDown("space")){
-            setImage(img_up);
+            setImage(imgUp);
             setLocation(getX(), getY() - velocityUpY);
         }
     }
@@ -97,7 +91,7 @@ public class Kirby extends Actor
     }
     
     
-    public void gravedad(){
+    public void fall(){
         if(getY()<referenceY){
             setLocation(getX(), getY() + velocityDownY);
         }

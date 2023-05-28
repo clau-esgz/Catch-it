@@ -6,32 +6,36 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Options extends World
-{
-
-    /**
-     * Constructor for objects of class Options.
-     * 
-     */
-    public Options()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+public class Options extends World {
+    private final MainScreen mainScreen;
+    private static RecordsScreen records;
+    private static HowToPlay howToPlay;
+    
+    public Options(MainScreen mainScreen) {
         super(600, 400, 1); 
+        this.mainScreen = mainScreen;
         prepare();
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
-
-        BackButton1 backButton = new BackButton1(new MainScreen());
-        addObject(backButton,60,58);
-        RecordsButton recordsButton = new RecordsButton();
-        addObject(recordsButton,383,213);
-        HelpButton helpButton = new HelpButton();
-        addObject(helpButton,244,204);
+    private void prepare() {
+        if (records == null) {
+            records = new RecordsScreen(this);
+        }
+        
+        if (howToPlay == null) {
+            howToPlay = new HowToPlay(this);
+        }
+        
+        TransitionButton backButton = new TransitionButton("backButton.png", mainScreen);
+        addObject(backButton, 75, 65);
+        
+        TransitionButton recordsButton = new TransitionButton("recordsButton.png", records);
+        addObject(recordsButton, 400, 200);
+        
+        TransitionButton helpButton = new TransitionButton("helpButton.png", howToPlay);
+        addObject(helpButton, 250, 190);
+        
+        
     }
 }
+
