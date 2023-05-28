@@ -7,26 +7,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class MainScreen extends World {
-    private static Options options;
-    
+
     public MainScreen() {
         super(600, 400, 1); 
         prepare();
     }
-    
+
     private void prepare() {
-        if (options == null) {
-            options = new Options(this);
-        }
-        
-        TransitionButton optionsButton = new TransitionButton("optionsButton.png", options);
+
+        TransitionButton optionsButton = new TransitionButton("optionsButton.png", WorldsFactory.OPTIONS_SCREEN);
         addObject(optionsButton, 488, 319);
-        
-        TransitionButton playButton = new TransitionButton("playButton.png", new Level1());
+
+        TransitionButton playButton = new TransitionButton("playButton.png", WorldsFactory.LEVEL_1_SCREEN);
         addObject(playButton, 312, 323);
-    }
-    
-    public Options getOptions() {
-        return options;
     }
 }

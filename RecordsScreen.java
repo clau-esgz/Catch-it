@@ -8,16 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RecordsScreen extends World
 {
-    private final Options options;
     /**
      * Constructor for objects of class RecordsScreen.
      * 
      */
-    public RecordsScreen(Options options)
+    public RecordsScreen()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        this.options = options;
+
         prepare();
     }
     /**
@@ -26,7 +25,7 @@ public class RecordsScreen extends World
      */
     private void prepare()
     {
-        TransitionButton backButton = new TransitionButton("backButton.png", options);
+        TransitionButton backButton = new TransitionButton("backButton.png", WorldsFactory.OPTIONS_SCREEN);
         addObject(backButton, 75, 65);
     }
 }
