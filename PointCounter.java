@@ -10,7 +10,7 @@ public class PointCounter extends Actor
      */
     public void act() 
     {
-        setImage(new GreenfootImage("puntos :" + count, 50, greenfoot.Color.BLACK, greenfoot.Color.WHITE));
+        setImage(new GreenfootImage("puntos :" + count, 40, greenfoot.Color.BLACK, greenfoot.Color.WHITE));
 
     }    
     public static void addCount(int points)
@@ -19,4 +19,9 @@ public class PointCounter extends Actor
         if(count<=0)
             count = 0;
     }
+    
+    public int getCounter(){
+        return count;
+    }
+
 }

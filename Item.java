@@ -15,16 +15,14 @@ public class Item extends Actor
      * 9 = Pear
      * 10 = Blueberry
      */
-    private int typeOfItem,value,speed,aceleration;
 
+    private int typeOfItem,value,speed,aceleration;
     public Item(int index)
     {
         speed = 0;
         aceleration = 2;
         value = 0;
         assignImagesAndValues(index);
-        
-        
     }
 
     public void act() 
@@ -40,7 +38,7 @@ public class Item extends Actor
         speed += aceleration;
     }
 
-    private void checkLimit()
+    public void checkLimit()
     {
         if(this.getY()>= 380)
         {
@@ -54,16 +52,17 @@ public class Item extends Actor
         {
             return;
         }
+        
         if(this.isTouching(Kirby.class))// metodo de java isTouching
-            {
-                Level1 world = (Level1)getWorld();
-                PointCounter counter = world.getPointCounter();
-                counter.addCount(value);
-                this.setLocation(1000,getY());
-            }
-
+        {
+            LevelWorld world = (LevelWorld)getWorld();
+            PointCounter counter = new PointCounter();
+            counter.addCount(value);
+            this.setLocation(1000,getY());
+        }
+        
     }
-
+    
     public void assignImagesAndValues(int typeOfItem)
     {
         switch(typeOfItem)
@@ -108,13 +107,12 @@ public class Item extends Actor
                 setImage("Pear.png");
                 value = 25;
                 break;
-                
+
             case 10:
                 setImage("Blueberry.png");
                 value = 25;
                 break;
-
         }
     }
-    
-    }
+
+}

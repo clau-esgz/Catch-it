@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Level1 extends World
+public class Level1 extends World implements LevelWorld
 {
     PointCounter counter = new PointCounter();
     private int random_number;
@@ -16,7 +16,6 @@ public class Level1 extends World
     private Item fruit;
     public Level1()
     {    
-        
         super(600, 400, 1);
         add();
         prepare();
@@ -31,14 +30,17 @@ public class Level1 extends World
 
     public void act() 
     {
-        
         generateObstacles();
         generateFruits();
         random_number ++;
-
+        checkNextLevel();
+        
+        
+        Timer timer = new Timer();
+        addObject(timer,70,70);
     }
 
-    private void generateObstacles()
+    public void generateObstacles()
     {
         
         if(random_number %100 ==0)
@@ -49,7 +51,7 @@ public class Level1 extends World
 
     }
     
-    private void generateFruits()
+    public void generateFruits()
     {
         
         if(random_number %50 == 0)
@@ -60,9 +62,10 @@ public class Level1 extends World
 
     } 
     
-    private void add()
+    public void add()
     {
         addObject(new Kirby(), 100, 280);
+        addObject(new Pop(),Greenfoot.getRandomNumber(360), Greenfoot.getRandomNumber(360)); 
     }
 
     public PointCounter getPointCounter() 
@@ -70,4 +73,10 @@ public class Level1 extends World
         return counter;
     }
     
+    public void checkNextLevel(){
+        PointCounter counterLevel = new PointCounter();
+        if(counterLevel.getCounter() >= 100){
+            Greenfoot.setWorld(new Level2()); 
+        }
+    }
 }

@@ -5,6 +5,4 @@ comment1.params=
 comment1.target=MainScreen()
 comment2.params=
 comment2.target=void\ prepare()
-comment3.params=
-comment3.target=Options\ getOptions()
-numComments=4
+numComments=3

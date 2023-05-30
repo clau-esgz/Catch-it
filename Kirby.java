@@ -14,7 +14,6 @@ public class Kirby extends Actor
     private int walkingDelay = COUNT_STOP_KIRBY_START_VALUE;
     private String [][]images; 
     private int imageIndex;
-    private int direction = DIRECTION_RIGHT;
     private int referenceY = REFERENCE_Y;
     private int velocityDownY = VELOCITY_DOWN_Y;
     private int velocityUpY = VELOCITY_UP_Y;
@@ -24,18 +23,15 @@ public class Kirby extends Actor
     
     public Kirby(){
         imagesRightLeft();
-        setImage(images[DIRECTION_RIGHT][0]);
+        setImage(images[0][0]);
         imgDown = new GreenfootImage("images/abajo.png");
         imgUp = new GreenfootImage("images/arriba.png");
     }
     
     public void act()
     {
-        walkRightLeft();
         fall();
         moveKeys();
-        selectImageWalk();
-        
     }
     
     private void imagesRightLeft(){
@@ -53,24 +49,14 @@ public class Kirby extends Actor
         
     }
     
-    private void walkRightLeft(){
-        switch(direction){
-            case DIRECTION_RIGHT:
-                setLocation(getX() + OFFSET, getY());
-                break;
-            
-            case DIRECTION_LEFT:
-                setLocation(getX() - OFFSET, getY());
-                break;
-            
-        }
-    }
-    
     private void moveKeys(){
         if(Greenfoot.isKeyDown("right")){
-            direction = DIRECTION_RIGHT;
-        } else if(Greenfoot.isKeyDown("left")){
-            direction = DIRECTION_LEFT;
+            setLocation(getX() + OFFSET, getY());
+            walkingDelay(DIRECTION_RIGHT);
+        } 
+        if(Greenfoot.isKeyDown("left")){
+            setLocation(getX() - OFFSET, getY());
+            walkingDelay(DIRECTION_LEFT);
         }
         if(Greenfoot.isKeyDown("down")){
             setImage(imgDown);
@@ -81,21 +67,26 @@ public class Kirby extends Actor
         }
     }
     
-    private void selectImageWalk(){
+    public void walkingDelay(int direction){
         walkingDelay --;
-        if(walkingDelay == 0){
-            imageIndex = (imageIndex + 1) % images[direction].length;
-            setImage(images[direction][imageIndex]);
-            walkingDelay = COUNT_STOP_KIRBY_START_VALUE;
+        if(direction == DIRECTION_LEFT){ 
+            if(walkingDelay == 0){
+                imageIndex = (imageIndex + 1) % images[DIRECTION_LEFT].length;
+                setImage(images[DIRECTION_LEFT][imageIndex]);
+                walkingDelay = COUNT_STOP_KIRBY_START_VALUE;
+            }
+        }
+        if(direction == DIRECTION_RIGHT){ 
+            if(walkingDelay == 0){
+                imageIndex = (imageIndex + 1) % images[DIRECTION_RIGHT].length;
+                setImage(images[DIRECTION_RIGHT][imageIndex]);
+                walkingDelay = COUNT_STOP_KIRBY_START_VALUE;
+            }
         }
     }
-    
-    
     public void fall(){
         if(getY()<referenceY){
             setLocation(getX(), getY() + velocityDownY);
         }
     }
-    
-    
 }

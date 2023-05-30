@@ -7,32 +7,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class Options extends World {
-    private final MainScreen mainScreen;
-    private static RecordsScreen records;
-    private static HowToPlay howToPlay;
     
-    public Options(MainScreen mainScreen) {
+    public Options() { 
         super(600, 400, 1); 
-        this.mainScreen = mainScreen;
         prepare();
     }
     
     private void prepare() {
-        if (records == null) {
-            records = new RecordsScreen(this);
-        }
-        
-        if (howToPlay == null) {
-            howToPlay = new HowToPlay(this);
-        }
-        
-        TransitionButton backButton = new TransitionButton("backButton.png", mainScreen);
+        TransitionButton backButton = new TransitionButton("backButton.png", MainScreen.class);
         addObject(backButton, 75, 65);
         
-        TransitionButton recordsButton = new TransitionButton("recordsButton.png", records);
+        TransitionButton recordsButton = new TransitionButton("recordsButton.png", RecordsScreen.class);
         addObject(recordsButton, 400, 200);
         
-        TransitionButton helpButton = new TransitionButton("helpButton.png", howToPlay);
+        TransitionButton helpButton = new TransitionButton("helpButton.png", HowToPlay.class);
         addObject(helpButton, 250, 190);
         
         

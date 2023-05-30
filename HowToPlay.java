@@ -8,16 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HowToPlay extends World
 {
-    private final Options options;
     /**
      * Constructor for objects of class HowToPlay.
      * 
      */
-    public HowToPlay(Options options)
+    public HowToPlay()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        this.options = options;
         prepare();
     }
     /**
@@ -26,7 +24,7 @@ public class HowToPlay extends World
      */
     private void prepare()
     {
-        TransitionButton backButton = new TransitionButton("backButton.png", options);
+        TransitionButton backButton = new TransitionButton("backButton.png", Options.class);
         addObject(backButton, 75, 65);
     }
 }
