@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HowToPlay extends World
 {
-
     /**
      * Constructor for objects of class HowToPlay.
      * 
@@ -19,13 +18,17 @@ public class HowToPlay extends World
         super(600, 400, 1); 
         prepare();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        BackButton1 backButton2 = new BackButton1(new Options());
-        addObject(backButton2,65,59);
+        TransitionButton backButton = new TransitionButton("backButton.png", Options.class);
+        addObject(backButton, 75, 65);
+        TransitionButton transitionButton2 = new TransitionButton("nextButton.png", ValuesScreen.class);
+        addObject(transitionButton2,514,340);
+        
     }
 }

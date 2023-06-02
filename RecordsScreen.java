@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class RecordsScreen here.
@@ -8,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class RecordsScreen extends World
 {
-
+    
     /**
      * Constructor for objects of class RecordsScreen.
      * 
@@ -18,6 +19,27 @@ public class RecordsScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         prepare();
+        
+        Records record = new Records();
+        
+        record.createFile();
+        record.readRecord();
+        
+        List<String> names = record.getNameList();
+        List<Integer> score = record.getScoreList();
+        
+        int scoreYPosition = 213;
+        
+
+        
+        for(int i = 0; i < 3 && i < score.size(); i++)
+        {
+            showText("Name Player: " + names.get(i) + " " + "score " + score.get(i), 300, scoreYPosition);
+            scoreYPosition += 50; 
+            
+        }
+        
+        
     }
     /**
      * Prepare the world for the start of the program.
@@ -25,7 +47,7 @@ public class RecordsScreen extends World
      */
     private void prepare()
     {
-        BackButton1 backButton1 = new BackButton1(new Options());
-        addObject(backButton1,67,59);
+        TransitionButton backButton = new TransitionButton("backButton.png", Options.class);
+        addObject(backButton, 75, 65);
     }
 }
